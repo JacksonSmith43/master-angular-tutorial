@@ -3,10 +3,9 @@ import { HeaderComponent } from './header.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'master-angular-tutorial';
-}
+export class AppComponent {}
