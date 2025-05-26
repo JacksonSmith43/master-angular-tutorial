@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -11,14 +11,11 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 
 export class UserComponent {
-  selectUsers = DUMMY_USERS[randomIndex];
-
-  get imagePath() { // Makes it available like an attribute in the template.
-    return 'assets/users/' + this.selectUsers.avatar;
-  }
+  selectUsers = signal(DUMMY_USERS[randomIndex]);
+  imagePath = computed(() => 'assets/users/' + this.selectUsers().avatar);
 
   onSelectUser() {
     const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectUsers = DUMMY_USERS[randomIndex];
+    this.selectUsers.set(DUMMY_USERS[randomIndex]);
   }
 }
