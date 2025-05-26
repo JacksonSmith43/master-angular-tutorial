@@ -9,6 +9,7 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
+
 export class UserComponent {
   selectUsers = DUMMY_USERS[randomIndex];
 
@@ -17,6 +18,7 @@ export class UserComponent {
   }
 
   onSelectUser() {
-    console.log('Clicked.');
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectUsers = DUMMY_USERS[randomIndex];
   }
 }
