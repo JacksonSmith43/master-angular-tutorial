@@ -15,4 +15,8 @@ export class UserComponent {
   get imagePath() { // Makes it available like an attribute in the template.
     return 'assets/users/' + this.selectUsers.avatar;
   }
+
+  onSelectUser() {
+    console.log('Clicked.');
+  }
 }
