@@ -1,6 +1,6 @@
 export const DUMMY_USERS = [
   {
-    id: 'ui',
+    id: 'ui1',
     name: 'Galadriel',
     avatar: 'galadriel.avif',
   },
