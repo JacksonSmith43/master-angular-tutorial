@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 
 export class TasksComponent {
-  @Input({ required: true }) name!: string;
+  @Input() name?: string; // Union Type can also be used that would replace the ?. For example: name: string | undefined
 }

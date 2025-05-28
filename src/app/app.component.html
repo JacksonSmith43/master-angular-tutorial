@@ -19,6 +19,6 @@
     </li>
   </ul>
 
-  <app-tasks [name]="selectedUser.name" />
+  <app-tasks [name]="selectedUser ? selectedUser.name : '' " /> <!-- If selectedUser has a value then output the name otherwise output an empty string. -->
 
 </main>
