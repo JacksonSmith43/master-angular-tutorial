@@ -7,9 +7,13 @@
       <app-user [user]="i" (select)="onSelectUser($event)" />
     </li>
     }
-
   </ul>
 
-  <app-tasks [name]="selectedUser ? selectedUser.name : '' " /> <!-- If selectedUser has a value then output the name otherwise output an empty string. -->
+  @if(selectedUser){
+  <app-tasks [name]="selectedUser.name" />
+
+  }@else {
+  <p id="no-user-selected">Select a user to see their tasks.</p>
+  }
 
 </main>

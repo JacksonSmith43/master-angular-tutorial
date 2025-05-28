@@ -12,3 +12,7 @@ main {
     display: flex;
     gap: 0.5rem;
 }
+
+#no-user-selected {
+    font-size: large;
+}
