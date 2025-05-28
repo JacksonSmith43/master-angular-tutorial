@@ -1,7 +1,7 @@
 <app-header />
 
 <main>
-  <ul id="list">
+  <ul id="users">
     <li>
       <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name" (select)="onSelectUser($event)" />
     </li>
@@ -18,4 +18,7 @@
       <app-user [id]="users[4].id" [avatar]="users[4].avatar" [name]="users[4].name" (select)="onSelectUser($event)" />
     </li>
   </ul>
+
+  <app-tasks [name]="selectedUser.name" />
+
 </main>
