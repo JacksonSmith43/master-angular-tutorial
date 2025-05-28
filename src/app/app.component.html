@@ -2,21 +2,12 @@
 
 <main>
   <ul id="users">
+    @for(i of users; track i.id){ <!-- track i.id: Angular uses the existing id property of each user to uniquely identify list items, incase the list is modified. -->
     <li>
-      <app-user [user]="users[0]" (select)="onSelectUser($event)" />
+      <app-user [user]="i" (select)="onSelectUser($event)" />
     </li>
-    <li>
-      <app-user [user]="users[1]" (select)="onSelectUser($event)" />
-    </li>
-    <li>
-      <app-user [user]="users[2]" (select)="onSelectUser($event)" />
-    </li>
-    <li>
-      <app-user [user]="users[3]" (select)="onSelectUser($event)" />
-    </li>
-    <li>
-      <app-user [user]="users[4]" (select)="onSelectUser($event)" />
-    </li>
+    }
+
   </ul>
 
   <app-tasks [name]="selectedUser ? selectedUser.name : '' " /> <!-- If selectedUser has a value then output the name otherwise output an empty string. -->
