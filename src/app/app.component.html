@@ -4,7 +4,7 @@
   <ul id="users">
     @for(i of users; track i.id){ <!-- track i.id: Angular uses the existing id property of each user to uniquely identify list items, incase the list is modified. -->
     <li>
-      <app-user [user]="i" (select)="onSelectUser($event)" />
+      <app-user [user]="i" [selected]="i.id === selectedUserId" (select)="onSelectUser($event)" />
     </li>
     }
   </ul>
