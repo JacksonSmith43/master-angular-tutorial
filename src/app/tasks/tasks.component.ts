@@ -46,15 +46,11 @@ export class TasksComponent {
   }
 
   onAddTask() {
-
-    /* this.tasks.push({
-       id: 't' + (this.tasks.length + 1),
-       userId: this.userId,
-       title: 'New Task',
-       summary: 'Summary of new task',
-       dueDate: new Date().toISOString().split('T')[0]
-     });*/
-
     this.isAddingTask = true;
   }
+
+  onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
 }
