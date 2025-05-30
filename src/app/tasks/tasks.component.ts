@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 import { AddTaskComponent } from './new-task/add-task.component';
+import { AddTaskData } from "./task/task.model";
 
 @Component({
   selector: 'app-tasks',
@@ -45,7 +46,7 @@ export class TasksComponent {
     this.tasks = this.tasks.filter((task) => task.id !== id); // Due to another array being created, the original array is not modified, but a new one is created, which causes a re-render of the component and when clicking Complete the task is removed from the list. task.id !== id is the Bedienung. If it is true, the task is not included in the new array, if it is false, the task is included in the new array. 
   }
 
-  onAddTask() {
+  onAddStartTask() {
     this.isAddingTask = true;
   }
 
@@ -53,4 +54,14 @@ export class TasksComponent {
     this.isAddingTask = false;
   }
 
+  onAddTask(taskData: AddTaskData) {
+    this.tasks.unshift({ // Unshift (similar to push) adds the new task to the beginning of the array, so it appears at the top of the list.
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date
+    })
+    this.isAddingTask = false;
+  }
 }

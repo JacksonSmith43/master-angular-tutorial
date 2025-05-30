@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // For NgModel. 
+import { AddTaskData } from '../task/task.model';
 
 @Component({
   selector: 'app-add-task',
@@ -10,6 +11,8 @@ import { FormsModule } from '@angular/forms'; // For NgModel.
 
 export class AddTaskComponent {
   @Output() cancel = new EventEmitter<void>();
+  @Output() add = new EventEmitter<AddTaskData>();
+
   enteredTitle = ''; // Two-way data binding with NgModel. 
   enteredSummary = '';
   enteredDueDate = '';
@@ -19,7 +22,11 @@ export class AddTaskComponent {
   }
 
   onSubmit() {
-
+    this.add.emit({
+      title: this.enteredTitle,
+      summary: this.enteredSummary,
+      date: this.enteredDueDate
+    });
   }
 
 }
