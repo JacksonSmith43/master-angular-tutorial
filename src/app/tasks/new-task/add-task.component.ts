@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms'; // For NgModel.
 
 @Component({
   selector: 'app-add-task',
-  imports: [FormsModule],
+  imports: [FormsModule], // FormsModule automatically prevents the default form submission behaviour, so we don't need to handle it manually.  
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css'
 })
@@ -16,6 +16,10 @@ export class AddTaskComponent {
 
   onCancel() {
     this.cancel.emit();
+  }
+
+  onSubmit() {
+
   }
 
 }
