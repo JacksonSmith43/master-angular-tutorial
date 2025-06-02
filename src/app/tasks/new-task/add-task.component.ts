@@ -1,11 +1,9 @@
 import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // For NgModel. 
-import { AddTaskData } from '../task/task.model';
 import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-add-task',
-  imports: [FormsModule], // FormsModule automatically prevents the default form submission behaviour, so we don't need to handle it manually.  
+  standalone: false,
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css'
 })
