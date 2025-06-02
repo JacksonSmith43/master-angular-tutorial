@@ -6,7 +6,7 @@ import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
+  standalone: true, // true, if this is a 19+ or 14 Angular version and if a standalone component was desired.  
   imports: [HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -24,6 +24,6 @@ export class AppComponent {
     this.selectedUserId = id;
   }
 
-  
+
 
 }
