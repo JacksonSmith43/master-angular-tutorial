@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 import { AddTaskComponent } from './new-task/add-task.component';
-import { AddTaskData } from "./task/task.model";
+import { type AddTaskData } from "./task/task.model";
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -15,8 +16,10 @@ export class TasksComponent {
   @Input({ required: true }) userId!: string;
   isAddingTask = false;
 
+  constructor(private tasksService: TasksService) { }
+
   get selectedUserTasks() {
-    return 
+    return this.tasksService.getUserTasks(this.userId);
   }
 
   onCompleteTaskParent(id: string) { // Added Parent to the name, to better understand the Ablauf of Methods call, seeing as task also had this name (onCompleteTask).
@@ -31,7 +34,7 @@ export class TasksComponent {
   }
 
   onAddTask(taskData: AddTaskData) {
-    
+
     this.isAddingTask = false;
   }
 }
