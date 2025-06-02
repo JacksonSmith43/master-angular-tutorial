@@ -27,6 +27,14 @@ export class TasksService {
         },
     ]
 
+    constructor() {
+        const tasks = localStorage.getItem("tasks");
+
+        if (tasks) {
+            this.tasks = JSON.parse(tasks);
+        }
+    }
+
     getUserTasks(userId: string) {
         return this.tasks.filter((task) => task.userId === userId);
     }
@@ -39,9 +47,15 @@ export class TasksService {
             summary: taskData.summary,
             dueDate: taskData.date
         })
+        this.saveTasks();
     }
 
     removeTasks(id: string) {
         this.tasks = this.tasks.filter((task) => task.id !== id); // Due to another array being created, the original array is not modified, but a new one is created, which causes a re-render of the component and when clicking Complete the task is removed from the list. task.id !== id is the Bedienung. If it is true, the task is not included in the new array, if it is false, the task is included in the new array. 
+        this.saveTasks();
+    }
+
+    private saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
     }
 }
